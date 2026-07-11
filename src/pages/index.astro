@@ -1,0 +1,151 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import HoursList from '../components/HoursList.astro';
+import { business } from '../data/business';
+import heroImage from '../assets/photos/stock/hero-fireside-tacos.jpg';
+import dishSteak from '../assets/photos/dish-steak-picado.jpg';
+import dishTacosVerdes from '../assets/photos/dish-tacos-verdes.jpg';
+import dishCarneAsada from '../assets/photos/dish-carne-asada-tacos.jpg';
+import spreadImage from '../assets/photos/storefront.webp';
+
+const categories = (await getCollection('menu')).sort((a, b) => a.data.order - b.data.order);
+const featuredCategories = categories.slice(0, 6);
+
+const signatureDishes = [
+  { image: dishSteak, alt: 'Carne picada plate with rice, beans, guacamole and salsa at Miguel’s', label: 'Carne Picada Plate' },
+  { image: dishCarneAsada, alt: 'Carne asada street tacos at Miguel’s Mexican Dining', label: 'Carne Asada Tacos' },
+  { image: dishTacosVerdes, alt: 'Crispy tostada-style tacos at Miguel’s Mexican Dining', label: 'Tacos Verdes' },
+];
+---
+
+<BaseLayout
+  title="Miguel's Mexican Dining | Authentic Mexican Restaurant in Stockton, CA"
+  description="Family-owned since 1985, Miguel's Mexican Dining serves scratch-made Mexican cocina, generous combo plates, and a full bar on Pacific Ave in Stockton, CA. Dine-in, takeout & delivery."
+>
+  <!-- Hero -->
+  <section class="relative isolate flex min-h-[88vh] items-center overflow-hidden">
+    <Image src={heroImage} alt="" role="presentation" class="absolute inset-0 -z-20 h-full w-full object-cover" widths={[640, 1024, 1600, 2000]} sizes="100vw" priority />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
+
+    <div class="mx-auto w-full max-w-(--container-page) px-4 py-28 sm:px-6 lg:px-8">
+      <p class="font-script text-3xl text-marigold sm:text-4xl" data-reveal>Bienvenidos a Miguel's</p>
+      <h1 class="mt-3 max-w-3xl text-balance font-display text-5xl font-semibold text-cream sm:text-6xl lg:text-7xl" data-reveal>
+        Mexican cocina, made from scratch, since 1985.
+      </h1>
+      <p class="mt-6 max-w-xl text-balance text-lg leading-relaxed text-cream/85" data-reveal>
+        A family-owned kitchen on Pacific Ave serving Stockton generous plates, a full bar, and the same recipes we started with four decades ago.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal>
+        <Button href={business.orderOnlineUrl} external variant="primary">
+          <Icon name="lucide:shopping-bag" class="h-4 w-4" aria-hidden="true" />
+          Order Online
+        </Button>
+        <Button href="/menu" variant="secondary">View Menu</Button>
+        <a href={`tel:${business.phone.e164}`} class="inline-flex items-center gap-2 text-sm font-semibold text-cream hover:text-marigold">
+          <Icon name="lucide:phone" class="h-4 w-4" aria-hidden="true" />
+          {business.phone.display}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story teaser -->
+  <section class="mx-auto max-w-(--container-page) px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div data-reveal>
+        <Image src={spreadImage} alt="The Miguel's Mexican Dining storefront and sign in Stockton, CA" width={800} height={800} class="aspect-square w-full rounded-3xl object-cover shadow-lg" />
+      </div>
+      <div>
+        <SectionHeading
+          eyebrow="Our story"
+          title="Four decades of Stockton hospitality"
+          subtitle="Miguel's opened its doors in 1985 with a simple promise: honest Mexican food, generous portions, and a warm welcome for every table. Four decades later, the same family still runs the kitchen — and the same recipes still bring people back."
+        />
+        <div class="mt-6">
+          <Button href="/about" variant="ghost">Read our story</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signature dishes -->
+  <section class="bg-ink-soft py-20 sm:py-28">
+    <div class="mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
+      <SectionHeading eyebrow="From the kitchen" title="Signature dishes" tone="cream" align="center" class="mx-auto" />
+      <div class="mt-12 grid gap-6 sm:grid-cols-3">
+        {
+          signatureDishes.map((dish) => (
+            <div class="group relative overflow-hidden rounded-2xl" data-reveal>
+              <Image
+                src={dish.image}
+                alt={dish.alt}
+                width={640}
+                height={800}
+                class="aspect-3/4 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/0 to-transparent" />
+              <p class="absolute bottom-4 left-4 font-display text-lg font-semibold text-cream">{dish.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu teaser -->
+  <section class="mx-auto max-w-(--container-page) px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <SectionHeading eyebrow="What's cooking" title="Explore the menu" align="center" class="mx-auto" />
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        featuredCategories.map((category) => (
+          <a
+            href={`/menu#${category.id}`}
+            class="group flex items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-white/50 px-6 py-5 transition-colors hover:border-chile hover:bg-white"
+            data-reveal
+          >
+            <div>
+              <h3 class="font-display text-lg font-semibold text-ink">{category.data.name}</h3>
+              {category.data.description && <p class="mt-1 text-sm text-ink/60">{category.data.description}</p>}
+            </div>
+            <Icon name="lucide:arrow-up-right" class="h-5 w-5 shrink-0 text-ink/40 transition-colors group-hover:text-chile" aria-hidden="true" />
+          </a>
+        ))
+      }
+    </div>
+    <div class="mt-10 flex justify-center">
+      <Button href="/menu" variant="primary">See Full Menu</Button>
+    </div>
+  </section>
+
+  <!-- Hours / location strip -->
+  <section class="bg-chile py-16 text-cream">
+    <div class="mx-auto grid max-w-(--container-page) gap-10 px-4 sm:px-6 lg:grid-cols-3 lg:px-8">
+      <div data-reveal>
+        <h2 class="font-display text-2xl font-semibold">Hours</h2>
+        <HoursList tone="cream" class="mt-4" />
+      </div>
+      <div data-reveal>
+        <h2 class="font-display text-2xl font-semibold">Find Us</h2>
+        <address class="mt-4 space-y-1 not-italic leading-relaxed text-cream/90">
+          <p>{business.address.street}</p>
+          <p>{business.address.city}, {business.address.state} {business.address.zip}</p>
+        </address>
+        <a href={business.mapsUrl} target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold underline decoration-cream/40 underline-offset-4 hover:decoration-cream">
+          Get Directions
+          <Icon name="lucide:arrow-up-right" class="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
+      </div>
+      <div data-reveal>
+        <h2 class="font-display text-2xl font-semibold">From Our Family</h2>
+        <p class="mt-4 font-script text-2xl leading-snug text-cream/95">
+          "Every plate leaves our kitchen the way we'd serve it to our own family."
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

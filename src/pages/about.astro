@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import dishSteak from '../assets/photos/dish-steak-picado.jpg';
+import spreadImage from '../assets/photos/stock/spread-tacos-guac-beer.jpg';
+import fireImage from '../assets/photos/stock/hero-fireside-tacos.jpg';
+import { business } from '../data/business';
+
+const values = [
+  { icon: 'lucide:cooking-pot', title: 'Made from scratch', body: 'Salsas, sauces and sides prepared fresh in-house, every day.' },
+  { icon: 'lucide:users', title: 'Family-owned', body: 'Run by the same family since we opened our doors in 1985.' },
+  { icon: 'lucide:martini', title: 'Full bar', body: 'Margaritas, Mexican beer and wine to go with every plate.' },
+  { icon: 'lucide:accessibility', title: 'Wheelchair accessible', body: 'Dine-in, takeout and delivery for the whole table.' },
+];
+---
+
+<BaseLayout
+  title="Our Story | Miguel's Mexican Dining — Family-Owned Since 1985"
+  description="Miguel's Mexican Dining has been family-owned and operated in Stockton, CA since 1985 — scratch-made Mexican cocina, generous portions, and a full bar."
+>
+  <section class="relative isolate flex min-h-[50vh] items-center overflow-hidden">
+    <Image src={fireImage} alt="" role="presentation" class="absolute inset-0 -z-20 h-full w-full object-cover" widths={[640, 1024, 1600]} sizes="100vw" />
+    <div class="absolute inset-0 -z-10 bg-ink/60"></div>
+    <div class="mx-auto max-w-(--container-page) px-4 py-20 sm:px-6 lg:px-8">
+      <p class="font-script text-3xl text-marigold">Since 1985</p>
+      <h1 class="mt-2 max-w-2xl text-balance font-display text-4xl font-semibold text-cream sm:text-5xl">Our Story</h1>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-(--container-page) px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div data-reveal>
+        <Image src={dishSteak} alt="Carne picada plate served at Miguel's Mexican Dining" width={800} height={1000} class="aspect-4/5 w-full rounded-3xl object-cover shadow-lg" />
+      </div>
+      <div class="flex flex-col gap-6" data-reveal>
+        <SectionHeading eyebrow="How we started" title="A family kitchen on Pacific Ave" />
+        <p class="text-lg leading-relaxed text-ink/75">
+          Miguel's Mexican Dining opened in {business.foundedYear} with a straightforward idea: cook the same food we'd serve our own
+          family, portion it generously, and treat every table like a regular. Four decades later, Stockton has kept showing up
+          — and we've kept the recipes, and the welcome, the same.
+        </p>
+        <p class="text-lg leading-relaxed text-ink/75">
+          Today the kitchen still makes salsas, sauces and sides from scratch, the bar still pours a proper margarita, and the
+          dining room still fills up with families, regulars and first-timers alike.
+        </p>
+        <p class="font-script text-3xl text-chile">Gracias for four decades of Stockton.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-ink-soft py-20 text-cream sm:py-24">
+    <div class="mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
+      <SectionHeading eyebrow="What matters here" title="Rooted in the details" tone="cream" align="center" class="mx-auto" />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          values.map((value) => (
+            <div class="rounded-2xl border border-cream/10 bg-cream/5 p-6 text-center" data-reveal>
+              <Icon name={value.icon} class="mx-auto h-8 w-8 text-marigold" aria-hidden="true" />
+              <h3 class="mt-4 font-display text-lg font-semibold">{value.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-cream/70">{value.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-(--container-page) px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div class="order-2 flex flex-col gap-6 lg:order-1" data-reveal>
+        <SectionHeading eyebrow="Come hungry" title="Pull up a chair" />
+        <p class="text-lg leading-relaxed text-ink/75">
+          Whether it's a weeknight combo plate or a weekend table with the whole family, we're happy to have you. Dine in, order
+          takeout, or have it delivered — the salsa's the same either way.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <Button href="/menu" variant="primary">View Menu</Button>
+          <Button href="/contact" variant="ghost">Visit Us</Button>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2" data-reveal>
+        <Image src={spreadImage} alt="Tacos, guacamole and beer spread on a wood table" width={800} height={800} class="aspect-square w-full rounded-3xl object-cover shadow-lg" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

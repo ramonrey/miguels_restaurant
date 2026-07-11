@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import { images, type ImageKey } from '../data/images';
+
+interface Props {
+  category: CollectionEntry<'menu'>;
+}
+
+const { category } = Astro.props;
+const { name, description, items, image } = category.data;
+
+const tagMeta: Record<string, { label: string; icon: string; class: string }> = {
+  spicy: { label: 'Spicy', icon: 'lucide:flame', class: 'text-chile' },
+  vegetarian: { label: 'Vegetarian', icon: 'lucide:leaf', class: 'text-cactus' },
+  gf: { label: 'Gluten-free', icon: 'lucide:wheat-off', class: 'text-marigold-dark' },
+  popular: { label: 'Fan favorite', icon: 'lucide:star', class: 'text-marigold-dark' },
+};
+---
+
+<section id={category.id} class="scroll-mt-28 border-b border-ink/10 py-14 first:pt-0 last:border-b-0 sm:py-16">
+  <div class="grid gap-8 lg:grid-cols-[1fr_2fr] lg:gap-14">
+    <div data-reveal>
+      {
+        image && images[image as ImageKey] && (
+          <Image
+            src={images[image as ImageKey]}
+            alt={`${name} at Miguel's Mexican Dining`}
+            width={640}
+            height={480}
+            class="mb-5 aspect-4/3 w-full rounded-2xl object-cover"
+          />
+        )
+      }
+      <h2 class="font-display text-3xl font-semibold text-ink sm:text-4xl">{name}</h2>
+      {description && <p class="mt-2 max-w-sm text-ink/65">{description}</p>}
+    </div>
+
+    <ul class="flex flex-col gap-7" data-reveal>
+      {
+        items.map((item) => (
+          <li class="flex flex-col gap-1 border-b border-dashed border-ink/15 pb-6 last:border-b-0 last:pb-0">
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="flex flex-wrap items-center gap-2 font-display text-lg font-semibold text-ink">
+                {item.name}
+                {item.tags?.map((tag) => (
+                  <span title={tagMeta[tag].label} class:list={['inline-flex', tagMeta[tag].class]}>
+                    <Icon name={tagMeta[tag].icon} class="h-4 w-4" aria-hidden="true" />
+                    <span class="sr-only">{tagMeta[tag].label}</span>
+                  </span>
+                ))}
+              </span>
+              <span class="whitespace-nowrap font-display text-lg font-semibold text-chile">${item.price}</span>
+            </div>
+            {item.description && <p class="max-w-xl text-sm leading-relaxed text-ink/65">{item.description}</p>}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

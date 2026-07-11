@@ -1,0 +1,37 @@
+{
+  "name": "Seafood",
+  "order": 6,
+  "description": "Fresh off the coast, Mexican-style.",
+  "image": "margarita",
+  "items": [
+    {
+      "name": "Camarones a la Diabla",
+      "description": "Shrimp in a fiery chile de árbol sauce, rice, tortillas.",
+      "price": "18.95",
+      "tags": ["spicy", "gf"]
+    },
+    {
+      "name": "Shrimp Cocktail",
+      "description": "Chilled shrimp, house cocktail sauce, avocado, cucumber.",
+      "price": "14.95",
+      "tags": ["gf"]
+    },
+    {
+      "name": "Ceviche Tostadas",
+      "description": "Lime-cured white fish, tomato, onion, cilantro, on crisp tostadas.",
+      "price": "13.95",
+      "tags": ["gf"]
+    },
+    {
+      "name": "Camarones Empanizados",
+      "description": "Breaded jumbo shrimp, fried golden, side of tartar sauce.",
+      "price": "17.95"
+    },
+    {
+      "name": "Baja Fish Tacos Plate",
+      "description": "Three beer-battered fish tacos, cabbage slaw, rice & beans.",
+      "price": "16.95",
+      "tags": ["popular"]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { business } from '../data/business';
+---
+
+<BaseLayout
+  title="Page Not Found | Miguel's Mexican Dining"
+  description="The page you're looking for wandered off the plate. Head back to Miguel's Mexican Dining."
+  noindex
+>
+  <section class="mx-auto flex min-h-[70vh] max-w-(--container-page) flex-col items-center justify-center gap-6 px-4 py-24 text-center sm:px-6 lg:px-8">
+    <Icon name="lucide:cooking-pot" class="h-12 w-12 text-chile" aria-hidden="true" />
+    <p class="font-script text-3xl text-chile">¡Ay, caramba!</p>
+    <h1 class="font-display text-4xl font-semibold text-ink sm:text-5xl">This plate's not on the table.</h1>
+    <p class="max-w-md text-ink/65">
+      The page you're looking for doesn't exist — but the menu does. Let's get you back to something delicious.
+    </p>
+    <div class="mt-4 flex flex-wrap justify-center gap-4">
+      <Button href="/" variant="primary">Back Home</Button>
+      <Button href="/menu" variant="ghost">View Menu</Button>
+    </div>
+    <a href={`tel:${business.phone.e164}`} class="mt-2 text-sm font-semibold text-ink/60 hover:text-chile">
+      Or call us at {business.phone.display}
+    </a>
+  </section>
+</BaseLayout>

@@ -1,0 +1,48 @@
+{
+  "name": "Tacos",
+  "order": 2,
+  "description": "Corn or flour, made to order. Two or three per plate with rice & beans.",
+  "image": "dish-carne-asada-tacos",
+  "items": [
+    {
+      "name": "Carne Asada Tacos",
+      "description": "Grilled marinated steak, onion, cilantro.",
+      "price": "13.95",
+      "tags": ["popular", "gf"]
+    },
+    {
+      "name": "Al Pastor Tacos",
+      "description": "Achiote-marinated pork, pineapple, onion, cilantro.",
+      "price": "12.95",
+      "tags": ["popular", "gf"]
+    },
+    {
+      "name": "Carnitas Tacos",
+      "description": "Slow-braised pork, salsa verde.",
+      "price": "12.95",
+      "tags": ["gf"]
+    },
+    {
+      "name": "Grilled Chicken Tacos",
+      "description": "Citrus-marinated chicken, pico de gallo.",
+      "price": "12.50",
+      "tags": ["gf"]
+    },
+    {
+      "name": "Baja Fish Tacos",
+      "description": "Beer-battered white fish, cabbage slaw, chipotle crema.",
+      "price": "13.95"
+    },
+    {
+      "name": "Tacos Verdes",
+      "description": "Crispy tostada-style tacos, lettuce, cheese, salsa roja.",
+      "price": "11.95"
+    },
+    {
+      "name": "Veggie Tacos",
+      "description": "Grilled seasonal vegetables, black beans, queso fresco.",
+      "price": "11.50",
+      "tags": ["vegetarian", "gf"]
+    }
+  ]
+}

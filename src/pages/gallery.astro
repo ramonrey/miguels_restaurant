@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+
+import dishSteak from '../assets/photos/dish-steak-picado.jpg';
+import dishTacosVerdes from '../assets/photos/dish-tacos-verdes.jpg';
+import dishCarneAsada from '../assets/photos/dish-carne-asada-tacos.jpg';
+import heroFireside from '../assets/photos/stock/hero-fireside-tacos.jpg';
+import spread from '../assets/photos/stock/spread-tacos-guac-beer.jpg';
+import salsaChips from '../assets/photos/stock/salsa-chips.jpg';
+import churros from '../assets/photos/stock/churros.jpg';
+import margarita from '../assets/photos/stock/margarita.jpg';
+import limes from '../assets/photos/stock/limes.jpg';
+
+const photos = [
+  { src: dishSteak, alt: 'Carne picada plate with rice, beans, guacamole and salsa', tall: true },
+  { src: heroFireside, alt: 'Grilled steak tacos with fresh salsa by the fire', tall: false },
+  { src: dishCarneAsada, alt: 'Carne asada street tacos', tall: false },
+  { src: margarita, alt: 'Frozen margarita with salsa on the table', tall: true },
+  { src: spread, alt: 'Tacos, guacamole and beer spread on a wood table', tall: false },
+  { src: dishTacosVerdes, alt: 'Crispy tostada-style tacos', tall: false },
+  { src: salsaChips, alt: 'House salsa with warm tortilla chips', tall: true },
+  { src: churros, alt: 'Churros with chocolate dipping sauce', tall: false },
+  { src: limes, alt: 'Fresh limes, sliced and whole', tall: false },
+];
+---
+
+<BaseLayout
+  title="Gallery | Miguel's Mexican Dining — Stockton, CA"
+  description="A look at the food, the bar and the atmosphere at Miguel's Mexican Dining in Stockton, CA."
+>
+  <section class="mx-auto max-w-(--container-page) px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <SectionHeading eyebrow="A closer look" title="Gallery" subtitle="A few plates and pours from the dining room — swap in your own photography any time." />
+  </section>
+
+  <section class="mx-auto max-w-(--container-page) px-4 pb-20 sm:px-6 lg:px-8">
+    <div class="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
+      {
+        photos.map((photo) => (
+          <div class="break-inside-avoid overflow-hidden rounded-2xl" data-reveal>
+            <Image src={photo.src} alt={photo.alt} width={800} height={photo.tall ? 1000 : 600} class="w-full object-cover" />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="border-t border-ink/10 bg-cream-dim py-16">
+    <div class="mx-auto flex max-w-(--container-page) flex-col items-center gap-4 px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Hungry yet?</h2>
+      <Button href="/menu" variant="primary">View Menu</Button>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — restrained on purpose: ink/cream neutrals + 3 accents */
+  --color-ink: #1c1a17;
+  --color-ink-soft: #2c2822;
+  --color-cream: #fbf3e7;
+  --color-cream-dim: #f2e8d8;
+  --color-chile: #b3401f;
+  --color-chile-dark: #8f3018;
+  --color-marigold: #e4a825;
+  --color-marigold-dark: #c58e17;
+  --color-cactus: #4b6b3a;
+  --color-cactus-dark: #3a532c;
+
+  /* Typography */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-script: "Caveat", cursive;
+  --font-body: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Layout */
+  --container-page: 88rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-chile);
+    color: var(--color-cream);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-marigold);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .font-script {
+    font-family: var(--font-script);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 0 0.5rem 0;
+  }
+
+  .skip-link:focus {
+    left: 0;
+  }
+}

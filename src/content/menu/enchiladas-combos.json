@@ -1,0 +1,42 @@
+{
+  "name": "Enchiladas & Combination Plates",
+  "order": 4,
+  "description": "Served with Mexican rice & refried beans.",
+  "image": "dish-tacos-verdes",
+  "items": [
+    {
+      "name": "Chicken Enchiladas",
+      "description": "Three corn tortillas, shredded chicken, red or green sauce, melted cheese.",
+      "price": "14.50",
+      "tags": ["popular"]
+    },
+    {
+      "name": "Cheese Enchiladas",
+      "description": "Three corn tortillas, Chihuahua cheese, mild red sauce.",
+      "price": "12.95",
+      "tags": ["vegetarian"]
+    },
+    {
+      "name": "Enchiladas Suizas",
+      "description": "Chicken enchiladas bathed in a creamy tomatillo sauce.",
+      "price": "14.95"
+    },
+    {
+      "name": "Combo Plate — Build Your Own",
+      "description": "Pick any two: taco, enchilada, tamale, chile relleno or tostada.",
+      "price": "15.95",
+      "tags": ["popular"]
+    },
+    {
+      "name": "Chile Relleno Plate",
+      "description": "Two roasted poblanos stuffed with cheese, ranchero sauce, rice & beans.",
+      "price": "15.50",
+      "tags": ["vegetarian"]
+    },
+    {
+      "name": "Tamales Plate",
+      "description": "Two handmade tamales — pork, chicken or cheese — with red sauce.",
+      "price": "13.95"
+    }
+  ]
+}

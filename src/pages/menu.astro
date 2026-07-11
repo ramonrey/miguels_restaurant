@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import MenuCategory from '../components/MenuCategory.astro';
+import { business } from '../data/business';
+
+const categories = (await getCollection('menu')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Menu | Miguel's Mexican Dining — Stockton, CA"
+  description="Browse the full menu at Miguel's Mexican Dining: antojitos, tacos, burritos, enchiladas, Steak Chicana, seafood, vegetarian plates, postres and a full bar."
+>
+  <section class="bg-ink py-16 text-cream sm:py-20">
+    <div class="mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
+      <p class="font-script text-3xl text-marigold">La Carta</p>
+      <h1 class="mt-2 font-display text-4xl font-semibold sm:text-5xl">Our Menu</h1>
+      <p class="mt-4 max-w-2xl text-cream/75">
+        Everything is made to order, from the salsa up. Ask your server about daily specials, and let us know about allergies — we're happy to adjust.
+      </p>
+      <div class="mt-8">
+        <Button href={business.orderOnlineUrl} external variant="primary">
+          <Icon name="lucide:shopping-bag" class="h-4 w-4" aria-hidden="true" />
+          Order Online
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <nav aria-label="Menu categories" class="sticky top-[64px] z-40 overflow-x-auto border-b border-ink/10 bg-cream/95 backdrop-blur sm:top-[72px]">
+    <ul class="mx-auto flex max-w-(--container-page) gap-6 px-4 py-3 text-sm font-medium whitespace-nowrap sm:px-6 lg:px-8">
+      {
+        categories.map((category) => (
+          <li>
+            <a href={`#${category.id}`} class="text-ink/70 transition-colors hover:text-chile">
+              {category.data.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div class="mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
+    {categories.map((category) => <MenuCategory category={category} />)}
+  </div>
+
+  <section class="border-t border-ink/10 bg-cream-dim py-14">
+    <div class="mx-auto flex max-w-(--container-page) flex-col items-center gap-4 px-4 text-center sm:px-6 lg:px-8">
+      <p class="max-w-xl text-sm text-ink/60">
+        Menu items and prices are illustrative and subject to change — order online or call {business.phone.display} for current pricing.
+      </p>
+      <Button href={business.orderOnlineUrl} external variant="primary">
+        <Icon name="lucide:shopping-bag" class="h-4 w-4" aria-hidden="true" />
+        Order Online
+      </Button>
+    </div>
+  </section>
+</BaseLayout>

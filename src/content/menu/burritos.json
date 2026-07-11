@@ -1,0 +1,37 @@
+{
+  "name": "Burritos",
+  "order": 3,
+  "description": "Rolled by hand, stuffed generously.",
+  "image": "dish-steak-picado",
+  "items": [
+    {
+      "name": "Miguel's Grande Burrito",
+      "description": "Carne asada, rice, beans, cheese, guacamole & pico — a house favorite since day one.",
+      "price": "14.95",
+      "tags": ["popular"]
+    },
+    {
+      "name": "Wet Burrito",
+      "description": "Your choice of meat, smothered in ranchero sauce & melted cheese.",
+      "price": "14.50"
+    },
+    {
+      "name": "California Burrito",
+      "description": "Carne asada, French fries, cheese, guacamole, sour cream.",
+      "price": "13.95",
+      "tags": ["popular"]
+    },
+    {
+      "name": "Bean & Cheese Burrito",
+      "description": "Simple, classic, made fresh.",
+      "price": "8.95",
+      "tags": ["vegetarian"]
+    },
+    {
+      "name": "Veggie Burrito",
+      "description": "Grilled vegetables, rice, beans, cheese, guacamole.",
+      "price": "11.95",
+      "tags": ["vegetarian"]
+    }
+  ]
+}

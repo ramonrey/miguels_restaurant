@@ -1,0 +1,53 @@
+{
+  "name": "Bebidas & Bar",
+  "order": 9,
+  "description": "Full bar — beer, wine & house margaritas.",
+  "image": "limes",
+  "items": [
+    {
+      "name": "House Margarita",
+      "description": "Silver tequila, triple sec, fresh lime, salted rim.",
+      "price": "9.50",
+      "tags": ["popular"]
+    },
+    {
+      "name": "Top-Shelf Margarita",
+      "description": "Ask your server about today's premium tequila pour.",
+      "price": "12.95"
+    },
+    {
+      "name": "Michelada",
+      "description": "Mexican beer, lime, house michelada mix, chile-salt rim.",
+      "price": "8.95",
+      "tags": ["spicy"]
+    },
+    {
+      "name": "Mexican Beer",
+      "description": "Ask about our rotating selection of Mexican imports.",
+      "price": "5.50"
+    },
+    {
+      "name": "House Wine",
+      "description": "Red, white or blush, by the glass.",
+      "price": "7.50"
+    },
+    {
+      "name": "Horchata",
+      "description": "House-made rice & cinnamon agua fresca.",
+      "price": "4.50",
+      "tags": ["vegetarian", "gf"]
+    },
+    {
+      "name": "Aguas Frescas",
+      "description": "Ask about today's flavor — jamaica, tamarindo or fresa.",
+      "price": "4.50",
+      "tags": ["vegetarian", "gf"]
+    },
+    {
+      "name": "Mexican Coca-Cola",
+      "description": "Cane-sugar bottle.",
+      "price": "3.50",
+      "tags": ["vegetarian", "gf"]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Steak Chicana & Specialties",
+  "order": 5,
+  "description": "House specialties, char-grilled over an open flame.",
+  "image": "hero-fireside-tacos",
+  "items": [
+    {
+      "name": "Steak Chicana",
+      "description": "Miguel's signature — grilled ribeye strips in a rich chile & garlic sauce, grilled onions.",
+      "price": "19.95",
+      "tags": ["popular", "spicy", "gf"]
+    },
+    {
+      "name": "Carne Asada Plate",
+      "description": "Grilled marinated steak, rice, beans, guacamole, tortillas.",
+      "price": "18.95",
+      "tags": ["gf"]
+    },
+    {
+      "name": "Fajitas",
+      "description": "Sizzling steak, chicken or shrimp with grilled peppers & onions, tortillas on the side.",
+      "price": "18.50"
+    },
+    {
+      "name": "Molcajete",
+      "description": "A volcanic-stone bowl of steak, chicken, shrimp & cactus simmered in salsa.",
+      "price": "22.95",
+      "tags": ["popular", "spicy", "gf"]
+    },
+    {
+      "name": "Carne en su Jugo",
+      "description": "Tender beef simmered in its own broth with bacon & beans.",
+      "price": "17.95",
+      "tags": ["gf"]
+    }
+  ]
+}

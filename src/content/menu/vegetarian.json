@@ -1,0 +1,38 @@
+{
+  "name": "Vegetarian",
+  "order": 7,
+  "description": "Plant-forward plates, full of flavor.",
+  "image": "spread-tacos-guac-beer",
+  "items": [
+    {
+      "name": "Veggie Fajitas",
+      "description": "Grilled peppers, onions, zucchini & mushrooms, sizzling platter.",
+      "price": "14.95",
+      "tags": ["vegetarian", "gf"]
+    },
+    {
+      "name": "Cheese Enchiladas",
+      "description": "Three corn tortillas, Chihuahua cheese, mild red sauce.",
+      "price": "12.95",
+      "tags": ["vegetarian"]
+    },
+    {
+      "name": "Veggie Burrito",
+      "description": "Grilled vegetables, rice, beans, cheese, guacamole.",
+      "price": "11.95",
+      "tags": ["vegetarian"]
+    },
+    {
+      "name": "Bean Tostada",
+      "description": "Crisp tostada, refried beans, lettuce, cheese, salsa, sour cream.",
+      "price": "8.95",
+      "tags": ["vegetarian"]
+    },
+    {
+      "name": "Chile Relleno Plate",
+      "description": "Two roasted poblanos stuffed with cheese, ranchero sauce, rice & beans.",
+      "price": "15.50",
+      "tags": ["vegetarian"]
+    }
+  ]
+}

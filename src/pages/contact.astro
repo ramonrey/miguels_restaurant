@@ -1,0 +1,109 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import HoursList from '../components/HoursList.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { business } from '../data/business';
+---
+
+<BaseLayout
+  title="Contact & Location | Miguel's Mexican Dining — Stockton, CA"
+  description="Visit Miguel's Mexican Dining at 7555 Pacific Ave, Suite 135, Stockton, CA. Call (209) 208-2200, check hours, or send us a message."
+>
+  <section class="mx-auto max-w-(--container-page) px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <SectionHeading eyebrow="Say hello" title="Visit Us" subtitle="On Pacific Ave in Stockton — dine in, call ahead, or order online for takeout and delivery." />
+  </section>
+
+  <section class="mx-auto max-w-(--container-page) px-4 pb-20 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+      <div class="flex flex-col gap-10" data-reveal>
+        <div>
+          <h2 class="font-display text-xl font-semibold text-ink">Location</h2>
+          <address class="mt-3 space-y-1 not-italic leading-relaxed text-ink/75">
+            <p>{business.address.street}</p>
+            <p>{business.address.city}, {business.address.state} {business.address.zip}</p>
+          </address>
+          <a href={business.mapsUrl} target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-chile hover:underline">
+            Get Directions
+            <Icon name="lucide:arrow-up-right" class="h-3.5 w-3.5" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div>
+          <h2 class="font-display text-xl font-semibold text-ink">Call or Order</h2>
+          <a href={`tel:${business.phone.e164}`} class="mt-3 flex items-center gap-2 text-lg font-semibold text-ink hover:text-chile">
+            <Icon name="lucide:phone" class="h-5 w-5" aria-hidden="true" />
+            {business.phone.display}
+          </a>
+          <div class="mt-4">
+            <Button href={business.orderOnlineUrl} external variant="primary">
+              <Icon name="lucide:shopping-bag" class="h-4 w-4" aria-hidden="true" />
+              Order Online
+            </Button>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-display text-xl font-semibold text-ink">Hours</h2>
+          <HoursList class="mt-3 max-w-sm" />
+        </div>
+
+        {
+          business.social.facebook && (
+            <div>
+              <h2 class="font-display text-xl font-semibold text-ink">Follow Along</h2>
+              <a
+                href={business.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-chile"
+              >
+                <Icon name="lucide:facebook" class="h-5 w-5" aria-hidden="true" />
+                Miguel's Mexican Dining on Facebook
+              </a>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="flex flex-col gap-10" data-reveal>
+        <MapEmbed class="h-80 w-full sm:h-96" />
+
+        <div>
+          <h2 class="font-display text-xl font-semibold text-ink">Send a Message</h2>
+          <p class="mt-2 text-sm text-ink/60">For reservations of 6+ or questions — we'll get back to you as soon as we can.</p>
+          <form action={business.formEndpoint} method="POST" class="mt-6 flex flex-col gap-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="flex flex-col gap-1.5">
+                <label for="name" class="text-sm font-medium text-ink">Name</label>
+                <input id="name" name="name" type="text" required class="rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-chile" />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label for="phone" class="text-sm font-medium text-ink">Phone</label>
+                <input id="phone" name="phone" type="tel" class="rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-chile" />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="email" class="text-sm font-medium text-ink">Email</label>
+              <input id="email" name="email" type="email" required class="rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-chile" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="message" class="text-sm font-medium text-ink">Message</label>
+              <textarea id="message" name="message" rows="4" required class="rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-chile"></textarea>
+            </div>
+            <button type="submit" class="mt-2 inline-flex items-center justify-center rounded-full bg-chile px-6 py-3 text-sm font-semibold text-cream shadow-sm transition-colors hover:bg-chile-dark">
+              Send Message
+            </button>
+            <p class="text-xs text-ink/45">
+              This form needs a live endpoint — create a free form at
+              <a href="https://formspree.io" target="_blank" rel="noopener noreferrer" class="underline">formspree.io</a>
+              and drop the ID into <code>src/data/business.ts</code> (<code>formEndpoint</code>).
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

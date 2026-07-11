@@ -1,0 +1,32 @@
+{
+  "name": "Postres",
+  "order": 8,
+  "description": "A sweet finish.",
+  "image": "churros",
+  "items": [
+    {
+      "name": "Churros",
+      "description": "Cinnamon-sugar dusted, warm chocolate dipping sauce.",
+      "price": "7.50",
+      "tags": ["vegetarian", "popular"]
+    },
+    {
+      "name": "Flan",
+      "description": "Silky house-made caramel custard.",
+      "price": "6.95",
+      "tags": ["vegetarian", "gf"]
+    },
+    {
+      "name": "Sopapillas",
+      "description": "Fried pastry pillows, honey, cinnamon sugar.",
+      "price": "6.95",
+      "tags": ["vegetarian"]
+    },
+    {
+      "name": "Fried Ice Cream",
+      "description": "Crunchy cinnamon-corn flake crust, vanilla ice cream, whipped cream.",
+      "price": "7.95",
+      "tags": ["vegetarian", "popular"]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import logo from '../assets/photos/logo.png';
+import { business } from '../data/business';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/menu', label: 'Menu' },
+  { href: '/about', label: 'Our Story' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/contact', label: 'Visit Us' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur">
+  <div class="mx-auto flex max-w-(--container-page) items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <a href="/" class="flex shrink-0 items-center gap-3">
+      <Image src={logo} alt="Miguel's Mexican Dining logo — two toucans on a branch" width={56} height={56} class="h-12 w-12 sm:h-14 sm:w-14" />
+      <span class="flex flex-col leading-none">
+        <span class="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">Miguel's</span>
+        <span class="text-[0.65rem] uppercase tracking-[0.2em] text-ink/60 sm:text-xs">Mexican Dining</span>
+      </span>
+    </a>
+
+    <nav id="primary-nav" class="hidden items-center gap-8 lg:flex" aria-label="Primary">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'font-body text-sm font-medium tracking-wide transition-colors hover:text-chile',
+              currentPath === link.href ? 'text-chile' : 'text-ink',
+            ]}
+            aria-current={currentPath === link.href ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 lg:flex">
+      <a
+        href={`tel:${business.phone.e164}`}
+        class="flex items-center gap-2 text-sm font-medium text-ink transition-colors hover:text-chile"
+      >
+        <Icon name="lucide:phone" class="h-4 w-4" aria-hidden="true" />
+        {business.phone.display}
+      </a>
+      <a
+        href={business.orderOnlineUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-chile px-5 py-2.5 text-sm font-semibold text-cream shadow-sm transition-colors hover:bg-chile-dark"
+      >
+        Order Online
+      </a>
+    </div>
+
+    <button
+      id="nav-toggle"
+      type="button"
+      class="flex h-10 w-10 items-center justify-center rounded-full text-ink lg:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Toggle menu"
+    >
+      <Icon name="lucide:menu" class="h-6 w-6" id="icon-menu" aria-hidden="true" />
+      <Icon name="lucide:x" class="hidden h-6 w-6" id="icon-close" aria-hidden="true" />
+    </button>
+  </div>
+
+  <div id="mobile-nav" class="hidden border-t border-ink/10 bg-cream lg:hidden">
+    <nav class="flex flex-col gap-1 px-4 py-4" aria-label="Mobile">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'rounded-lg px-3 py-3 font-body text-base font-medium',
+              currentPath === link.href ? 'bg-chile/10 text-chile' : 'text-ink',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href={`tel:${business.phone.e164}`} class="flex items-center gap-2 rounded-lg px-3 py-3 font-body text-base font-medium text-ink">
+        <Icon name="lucide:phone" class="h-4 w-4" aria-hidden="true" />
+        {business.phone.display}
+      </a>
+      <a
+        href={business.orderOnlineUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 rounded-full bg-chile px-5 py-3 text-center text-base font-semibold text-cream"
+      >
+        Order Online
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileNav?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    iconMenu?.classList.toggle('hidden', isOpen);
+    iconClose?.classList.toggle('hidden', !isOpen);
+  });
+</script>

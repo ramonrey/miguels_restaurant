@@ -1,0 +1,21 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+  tone?: 'ink' | 'cream';
+}
+
+const { eyebrow, title, subtitle, align = 'left', tone = 'ink' } = Astro.props;
+
+const alignClass = align === 'center' ? 'text-center items-center mx-auto' : 'text-left items-start';
+const toneClass = tone === 'cream' ? 'text-cream' : 'text-ink';
+const subtleClass = tone === 'cream' ? 'text-cream/70' : 'text-ink/65';
+---
+
+<div class:list={['flex max-w-2xl flex-col gap-3', alignClass]} data-reveal>
+  {eyebrow && <p class="font-script text-2xl leading-none text-chile">{eyebrow}</p>}
+  <h2 class:list={['text-balance font-display text-3xl font-semibold sm:text-4xl lg:text-5xl', toneClass]}>{title}</h2>
+  {subtitle && <p class:list={['text-balance text-base leading-relaxed sm:text-lg', subtleClass]}>{subtitle}</p>}
+</div>

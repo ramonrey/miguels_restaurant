@@ -1,0 +1,56 @@
+{
+  "name": "Antojitos & Starters",
+  "order": 1,
+  "description": "Little cravings to share before the main plate arrives.",
+  "image": "salsa-chips",
+  "items": [
+    {
+      "name": "Chips & Salsa",
+      "description": "Fresh-fried corn tortilla chips, house salsa roja.",
+      "price": "5.50",
+      "tags": ["vegetarian", "gf"]
+    },
+    {
+      "name": "Guacamole & Chips",
+      "description": "Hand-mashed daily with lime, onion & cilantro.",
+      "price": "8.95",
+      "tags": ["vegetarian", "gf", "popular"]
+    },
+    {
+      "name": "Nachos Miguel's",
+      "description": "Crispy chips piled with melted cheese, beans, pico, guac & sour cream. Add carne asada or chicken.",
+      "price": "12.95",
+      "tags": ["popular"]
+    },
+    {
+      "name": "Queso Fundido",
+      "description": "Melted Chihuahua cheese with chorizo, served with warm tortillas.",
+      "price": "10.50",
+      "tags": ["spicy"]
+    },
+    {
+      "name": "Chile Relleno (Appetizer)",
+      "description": "Roasted poblano stuffed with cheese, lightly battered, ranchero sauce.",
+      "price": "9.50",
+      "tags": ["vegetarian"]
+    },
+    {
+      "name": "Chilaquiles",
+      "description": "Fried tortilla chips simmered in red or green salsa, queso fresco, crema, fried egg.",
+      "price": "11.95",
+      "tags": ["popular"]
+    },
+    {
+      "name": "Camarones a la Diabla (Starter)",
+      "description": "Shrimp tossed in a fiery chile de árbol sauce.",
+      "price": "13.95",
+      "tags": ["spicy", "gf"]
+    },
+    {
+      "name": "Quesadilla",
+      "description": "Griddled flour tortilla, melted cheese. Add carne asada, chicken or veggies.",
+      "price": "8.50",
+      "tags": ["vegetarian"]
+    }
+  ]
+}
