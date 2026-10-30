@@ -1,10 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import MenuCategory from '../components/MenuCategory.astro';
 import { business } from '../data/business';
+import menuHero from '../assets/photos/stock/spread-tacos-guac-beer.jpg';
 
 const categories = (await getCollection('menu')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -13,7 +15,9 @@ const categories = (await getCollection('menu')).sort((a, b) => a.data.order - b
   title="Menu | Miguel's Mexican Dining — Stockton, CA"
   description="Browse the full menu at Miguel's Mexican Dining: antojitos, tacos, burritos, enchiladas, Steak Chicana, seafood, vegetarian plates, postres and a full bar."
 >
-  <section class="bg-ink py-16 text-cream sm:py-20">
+  <section class="relative isolate overflow-hidden bg-ink py-16 text-cream sm:py-24">
+    <Image src={menuHero} alt="" role="presentation" class="absolute inset-0 -z-20 h-full w-full object-cover" widths={[640, 1024, 1600]} sizes="100vw" priority />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/80 to-ink/40"></div>
     <div class="mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
       <p class="font-script text-3xl text-marigold">La Carta</p>
       <h1 class="mt-2 font-display text-4xl font-semibold sm:text-5xl">Our Menu</h1>
@@ -29,12 +33,12 @@ const categories = (await getCollection('menu')).sort((a, b) => a.data.order - b
     </div>
   </section>
 
-  <nav aria-label="Menu categories" class="sticky top-[64px] z-40 overflow-x-auto border-b border-ink/10 bg-cream/95 backdrop-blur sm:top-[72px]">
+  <nav aria-label="Menu categories" class="sticky top-[64px] z-40 overflow-x-auto border-b border-chile-dark bg-chile sm:top-[72px]">
     <ul class="mx-auto flex max-w-(--container-page) gap-6 px-4 py-3 text-sm font-medium whitespace-nowrap sm:px-6 lg:px-8">
       {
         categories.map((category) => (
           <li>
-            <a href={`#${category.id}`} class="text-ink/70 transition-colors hover:text-chile">
+            <a href={`#${category.id}`} class="text-cream/85 transition-colors hover:text-marigold">
               {category.data.name}
             </a>
           </li>
@@ -43,7 +47,7 @@ const categories = (await getCollection('menu')).sort((a, b) => a.data.order - b
     </ul>
   </nav>
 
-  <div class="mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-(--container-page) px-4 pt-12 sm:px-6 sm:pt-16 lg:px-8">
     {categories.map((category) => <MenuCategory category={category} />)}
   </div>
 
