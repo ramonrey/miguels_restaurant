@@ -40,17 +40,6 @@ const signatureDishes = [
       <p class="mt-6 max-w-xl text-balance text-lg leading-relaxed text-cream/85" data-reveal>
         A family-owned kitchen on Pacific Ave serving Stockton generous plates, a full bar, and the same recipes we started with four decades ago.
       </p>
-      <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal>
-        <Button href={business.orderOnlineUrl} external variant="primary">
-          <Icon name="lucide:shopping-bag" class="h-4 w-4" aria-hidden="true" />
-          Order Online
-        </Button>
-        <Button href="/menu" variant="secondary">View Menu</Button>
-        <a href={`tel:${business.phone.e164}`} class="inline-flex items-center gap-2 text-sm font-semibold text-cream hover:text-marigold">
-          <Icon name="lucide:phone" class="h-4 w-4" aria-hidden="true" />
-          {business.phone.display}
-        </a>
-      </div>
     </div>
   </section>
 
